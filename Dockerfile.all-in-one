@@ -8,7 +8,7 @@ COPY ./frontend/package.json ./frontend/yarn.lock ./
 
 COPY ./frontend .
 
-RUN yarn install && yarn build
+RUN yarn install --network-timeout 100000 && yarn build
 
 FROM serversideup/php:beta-8.3.2-fpm-alpine
 
