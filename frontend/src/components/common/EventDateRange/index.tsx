@@ -6,11 +6,11 @@ interface EventDateRangeProps {
 }
 
 export const EventDateRange = ({event}: EventDateRangeProps) => {
-    const startDateFormatted = formatDate(event.start_date, "ddd, MMM D, YYYY h:mm A", event.timezone);
-    const endDateFormatted = event.end_date ? formatDate(event.end_date, "ddd, MMM D, YYYY h:mm A", event.timezone) : null;
-    const sameDayFormatted = formatDate(event.start_date, "dddd, MMMM D", event.timezone);
-    const startTimeFormatted = formatDate(event.start_date, "h:mm A", event.timezone);
-    const endTimeFormatted = event.end_date ? formatDate(event.end_date, "h:mm A", event.timezone) : null;
+    const startDateFormatted = formatDate(event.start_date, "ddd, D [de] MMM [de] YYYY [às] H:mm", event.timezone);
+    const endDateFormatted = event.end_date ? formatDate(event.end_date, "ddd, D [de] MMM [de] YYYY [às] H:mm", event.timezone) : null;
+    const sameDayFormatted = formatDate(event.start_date, "dddd, D [de] MMMM", event.timezone);
+    const startTimeFormatted = formatDate(event.start_date, "H:mm", event.timezone);
+    const endTimeFormatted = event.end_date ? formatDate(event.end_date, "H:mm", event.timezone) : null;
     const timezone = formatDate(event.start_date, "z", event.timezone);
 
     const isSameDay = event.end_date && event.start_date.substring(0, 10) === event.end_date.substring(0, 10);
