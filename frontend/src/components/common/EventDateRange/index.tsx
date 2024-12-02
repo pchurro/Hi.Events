@@ -6,9 +6,18 @@ interface EventDateRangeProps {
 }
 
 export const EventDateRange = ({event}: EventDateRangeProps) => {
-    const startDateFormatted = formatDate(event.start_date, "ddd, D [de] MMM [de] YYYY [às] H:mm", event.timezone);
-    const endDateFormatted = event.end_date ? formatDate(event.end_date, "ddd, D [de] MMM [de] YYYY [às] H:mm", event.timezone) : null;
-    const sameDayFormatted = formatDate(event.start_date, "dddd, D [de] MMMM", event.timezone);
+    const capitalizeFirstLetter = (text: string): string => {
+        return text.charAt(0).toUpperCase() + text.slice(1);
+    };
+
+    const formatDateWithCapitalization = (date: string, format: string): string => {
+        const formatted = formatDate(date, format, event.timezone);
+        return format.startsWith('ddd') ? capitalizeFirstLetter(formatted) : formatted;
+    };
+
+    const startDateFormatted = formatDateWithCapitalization(event.start_date, "ddd, D [de] MMM [de] YYYY [às] H:mm");
+    const endDateFormatted = event.end_date ? formatDateWithCapitalization(event.end_date, "ddd, D [de] MMM [de] YYYY [às] H:mm") : null;
+    const sameDayFormatted = formatDateWithCapitalization(event.start_date, "dddd, D [de] MMMM");
     const startTimeFormatted = formatDate(event.start_date, "H:mm", event.timezone);
     const endTimeFormatted = event.end_date ? formatDate(event.end_date, "H:mm", event.timezone) : null;
     const timezone = formatDate(event.start_date, "z", event.timezone);
