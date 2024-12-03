@@ -41,7 +41,7 @@ const TicketWidget = () => {
     }
 
     return (
-        <div className={'full-height'}>
+        <div className={'full-height'} style={{backgroundColor: settings.colors.background}}>
             <SelectTickets
                 widgetMode={'embedded'}
                 event={eventQuery.data}
